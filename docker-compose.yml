@@ -3,7 +3,7 @@ services:
     image: mongo:latest
     container_name: ctf_mongodb
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - mongo_data:/data/db
 
@@ -11,9 +11,9 @@ services:
     build: .
     container_name: ctf_app
     ports:
-      - "3010:3000"
+      - "3010:3010"
     environment:
-      - PORT=3000
+      - PORT=3010
       - MONGODB_URI=mongodb://mongodb:27017/jwt_ctf
       - JWT_SECRET=secret123
       - FLAG=FLAG{jwt_role_escalation_success}

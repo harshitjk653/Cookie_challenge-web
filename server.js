@@ -6,7 +6,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3010;
 
 // Middleware
 app.use(express.json());
@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/jwt_ctf')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27018/jwt_ctf')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log('MongoDB Connection Error:', err));
 
@@ -53,7 +53,7 @@ app.get('/api/profile', (req, res) => {
             return res.json({
                 username,
                 role,
-                flag: process.env.FLAG 
+                flag: process.env.FLAG
             });
         }
 
